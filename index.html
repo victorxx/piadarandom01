@@ -127,117 +127,64 @@
         <button id="close-ad">Fechar</button>
     </div>
 
-    <ul class="audio-list">
-        <li class="audio-item">
-            <h3>Piada 1: O que o zero disse para o oito?</h3>
-            <audio controls>
-                <source src="1.mp3" type="audio/mp3">
-                Seu navegador não suporta o áudio.
-            </audio>
-        </li>
-        <li class="audio-item">
-            <h3>Piada 2: Por que a vaca foi para o espaço?</h3>
-            <audio controls>
-                <source src="2.mp3" type="audio/mp3">
-                Seu navegador não suporta o áudio.
-            </audio>
-        </li>
-        <li class="audio-item">
-            <h3>Piada 3: Qual é o cúmulo do esquecimento?</h3>
-            <audio controls>
-                <source src="3.mp3" type="audio/mp3">
-                Seu navegador não suporta o áudio.
-            </audio>
-        </li>
-         <li class="audio-item">
-            <h3>Piada 3: Qual é o cúmulo do esquecimento?</h3>
-            <audio controls>
-                <source src="4.mp3" type="audio/mp3">
-                Seu navegador não suporta o áudio.
-            </audio>
-        </li>
-         <li class="audio-item">
-            <h3>Piada 3: Qual é o cúmulo do esquecimento?</h3>
-            <audio controls>
-                <source src="5.mp3" type="audio/mp3">
-                Seu navegador não suporta o áudio.
-            </audio>
-        </li>
-         <li class="audio-item">
-            <h3>Piada 3: Qual é o cúmulo do esquecimento?</h3>
-            <audio controls>
-                <source src="piadas/6.mp3" type="audio/mp3">
-                Seu navegador não suporta o áudio.
-            </audio>
-        </li>
-         <li class="audio-item">
-            <h3>Piada 3: Qual é o cúmulo do esquecimento?</h3>
-            <audio controls>
-                <source src="piadas/7.mp3" type="audio/mp3">
-                Seu navegador não suporta o áudio.
-            </audio>
-        </li>
-         <li class="audio-item">
-            <h3>Piada 3: Qual é o cúmulo do esquecimento?</h3>
-            <audio controls>
-                <source src="piadas/8.mp3" type="audio/mp3">
-                Seu navegador não suporta o áudio.
-            </audio>
-        </li>
-         <li class="audio-item">
-            <h3>Piada 3: Qual é o cúmulo do esquecimento?</h3>
-            <audio controls>
-                <source src="piadas/9.mp3" type="audio/mp3">
-                Seu navegador não suporta o áudio.
-            </audio>
-        </li>
-         <li class="audio-item">
-            <h3>Piada 3: Qual é o cúmulo do esquecimento?</h3>
-            <audio controls>
-                <source src="piadas/11.mp3" type="audio/mp3">
-                Seu navegador não suporta o áudio.
-            </audio>
-        </li>
-        </li>
-         <li class="audio-item">
-            <h3>Piada 3: Qual é o cúmulo do esquecimento?</h3>
-            <audio controls>
-                <source src="piadas/12.mp3" type="audio/mp3">
-                Seu navegador não suporta o áudio.
-            </audio>
-        </li>
-         <li class="audio-item">
-            <h3>Piada 3: Qual é o cúmulo do esquecimento?</h3>
-            <audio controls>
-                <source src="13.mp3" type="audio/mp3">
-                Seu navegador não suporta o áudio.
-            </audio>
-        </li>
-        <li class="audio-item">
-            <h3>Piada 3: Qual é o cúmulo do esquecimento?</h3>
-            <audio controls>
-                <source src="14.mp3" type="audio/mp3">
-                Seu navegador não suporta o áudio.
-            </audio>
-        </li>
-        <li class="audio-item">
-            <h3>Piada 3: Qual é o cúmulo do esquecimento?</h3>
-            <audio controls>
-                <source src="15.mp3" type="audio/mp3">
-                Seu navegador não suporta o áudio.
-            </audio>
-        </li>
+    <ul class="audio-list" id="piadas-list">
+        <!-- Piadas geradas dinamicamente irão aqui -->
     </ul>
 
     <footer>
-         <br>Compartilhe com os amigos e espalhe a diversão!</p>
+        <p>Compartilhe com os amigos e espalhe a diversão!</p>
     </footer>
 
+    <!-- Script para a propaganda -->
     <script>
         // Script para fechar a propaganda
         document.getElementById('close-ad').addEventListener('click', function() {
             document.getElementById('advertisement').style.display = 'none';
         });
+
+        // Lista de piadas com seus arquivos de áudio
+        const piadas = [
+            { id: 1, pergunta: "O que o zero disse para o oito?", arquivo: "1.mp3" },
+            { id: 2, pergunta: "Por que a vaca foi para o espaço?", arquivo: "2.mp3" },
+            { id: 3, pergunta: "Qual é o cúmulo do esquecimento?", arquivo: "3.mp3" },
+            { id: 4, pergunta: "O que é o cúmulo do excesso de confiança?", arquivo: "4.mp3" },
+            { id: 5, pergunta: "Por que o livro de matemática se suicidou?", arquivo: "5.mp3" },
+            { id: 6, pergunta: "O que o tomate foi fazer no banco?", arquivo: "6.mp3" },
+            { id: 7, pergunta: "Qual é o cúmulo da paciência?", arquivo: "7.mp3" },
+            { id: 8, pergunta: "Como o elétron atende o telefone?", arquivo: "8.mp3" },
+            { id: 9, pergunta: "O que é um vegetariano que não come carne?", arquivo: "9.mp3" },
+            { id: 10, pergunta: "Por que o computador foi ao médico?", arquivo: "10.mp3" }
+        ];
+
+        // Função para gerar e adicionar as piadas à página
+        function gerarPiadas() {
+            const piadasList = document.getElementById('piadas-list');
+            
+            for (let i = 0; i < piadas.length; i++) {
+                const piada = piadas[i];
+                
+                const piadaItem = document.createElement('li');
+                piadaItem.classList.add('audio-item');
+                
+                const piadaTitle = document.createElement('h3');
+                piadaTitle.textContent = `Piada ${piada.id}: ${piada.pergunta}`;
+                
+                const piadaAudio = document.createElement('audio');
+                piadaAudio.setAttribute('controls', '');
+                
+                const sourceAudio = document.createElement('source');
+                sourceAudio.setAttribute('src', `piadas/${piada.arquivo}`);
+                sourceAudio.setAttribute('type', 'audio/mp3');
+                
+                piadaAudio.appendChild(sourceAudio);
+                piadaItem.appendChild(piadaTitle);
+                piadaItem.appendChild(piadaAudio);
+                piadasList.appendChild(piadaItem);
+            }
+        }
+
+        // Chama a função para gerar as piadas
+        gerarPiadas();
     </script>
 </body>
 </html>
